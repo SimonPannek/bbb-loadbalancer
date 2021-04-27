@@ -11,9 +11,13 @@ from selenium.webdriver.support.expected_conditions import presence_of_element_l
 
 import config
 
+# Chrome options
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument("--headless")
+
 
 def get_user_count(room_id):
-    with webdriver.Chrome() as driver:
+    with webdriver.Chrome(options=chrome_options) as driver:
         # Connect to site
         wait = WebDriverWait(driver, 100)
         driver.get(config.url + room_id)
